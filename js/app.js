@@ -24,6 +24,17 @@ var app = new Framework7({
     helloWorld: function () {
       app.dialog.alert('Hello World!');
     },
+    deneme: function(){
+      $(document).on('page:init', '.page[data-name="home"]', function (e, page) {
+        var $ptrContent = page.$el.find('.ptr-content');
+        $ptrContent.on('ptr:refresh', function (e) {
+  setTimeout(function () {
+e.detail();  //app.ptr.done();
+  console.log("deneme");
+}, 2000);
+});
+});
+    },
   },
   routes: routes,
   popup: {
@@ -42,3 +53,30 @@ var app = new Framework7({
     placementId: 'pltd4o7ibb9rc653x14',
   },
 });
+
+app.methods.deneme();
+function funcbutton(event) {
+  
+  var x = document.getElementById("abc");
+  event.stopPropagation();
+  x.style.display = 'none';
+
+}
+
+
+
+function clickcheck() {
+ 
+
+  var e = document.getElementById("aa");
+  var m= document.getElementById("abc");
+  m.style.display = 'block';
+  if(e.addEventListener("click", mySecondFunction)===true)
+  {
+    console.log("aaaa2");
+  }
+     
+}
+function mySecondFunction() {
+console.log("clicked");
+}
